@@ -10,23 +10,31 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ProfilePage {
 
-    public WebDriver driver;
+    private WebDriver driver;
+
     public ProfilePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
-        this.driver = driver; }
+        this.driver = driver;
+    }
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[2]/div[1]/div/div/div/a[1]/span[1]")
     private WebElement userMenu;
+
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[2]/div[1]/div/div/div/div/ul/ul/li[6]/a/span")
     private WebElement logoutBtn;
 
     public String getUserName() {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"root\"]/div/div[2]/div[1]/div/div/div/a[1]/span[1]")));
-        String userName = userMenu.getText();
-        return userName; }
+        //String userName = userMenu.getText();
+        return userMenu.getText();
+    }
+
     public void entryMenu() {
-        userMenu.click(); }
+        userMenu.click();
+    }
+
     public void userLogout() {
-        logoutBtn.click();}
+        logoutBtn.click();
+    }
 }
